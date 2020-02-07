@@ -8,7 +8,128 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="MediumVioletRed">
+        <StackPanel 
+            VerticalAlignment="Center"
+            >
+
+
+            <TextBlock
+                HorizontalAlignment="Center"
+                Text="DICEE GAME"
+                Foreground="White"
+                FontSize="40"
+                />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="30">
+
+                <Border 
+                Margin="30"
+                Width="150"
+                Height="150"
+                CornerRadius="15"
+                Background="White"
+                >
+                    <TextBlock
+                    x:Name="LeftDice"
+                    Text="1"
+                    TextAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="Black"
+                    FontSize="50"/>
+
+                </Border>
+
+                <Border 
+                Margin="30"
+                Width="150"
+                Height="150"
+                CornerRadius="15"
+                Background="White"
+                >
+                    <TextBlock
+                    x:Name="RightDice"
+                    Text="1"
+                    TextAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="50"
+                    Foreground="Black"/>
+
+                </Border>
+
+            </StackPanel>
+
+            <TextBlock
+                Text="Rolls left: x"
+                x:Name="RollsLeft"
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Margin="15"
+                Foreground="AliceBlue"
+                />
+
+            <Button
+                x:Name="RollButton"
+                Content="Roll (Player x)"
+                FontSize="20"
+                Foreground="Black"
+                Background="Gainsboro"
+                Click="RollButton_Click"
+                HorizontalAlignment="Center"
+                />
+            <TextBlock
+                Margin="40"
+                x:Name="TurnScore"
+                FontSize="25"
+                Text="Turn Score: x"
+                Foreground="AliceBlue"
+                HorizontalAlignment="Center"
+                />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock
+                    x:Name="P1Score"
+                    Foreground="AliceBlue"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Text="Player 1 score: x"
+                    FontSize="20"
+                    Margin="40"
+                    />
+
+                <TextBlock
+                    x:Name="P2Score"
+                    Foreground="AliceBlue"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Text="Player 2 score: x"
+                    FontSize="20"
+                    Margin="40"
+                    />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Player 1 Jackpots count: x"
+                    x:Name="P1Jackpot"
+                    FontSize="15"
+                    Margin="20"
+                    />
+
+                <TextBlock
+                    Text="Player 2 Jackpots count: x"
+                    x:Name="P2Jackpot"
+                    FontSize="15"
+                    Margin="20"        
+                    />
+
+
+            </StackPanel>
+
+
+        </StackPanel>
+
 
     </Grid>
 </Page>
