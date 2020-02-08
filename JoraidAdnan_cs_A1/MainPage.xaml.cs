@@ -73,7 +73,17 @@ namespace JoraidAdnan_cs_A1
                         // display a messaage when player one gets three consecutive jackpots -> game over
                         MessageDialog GameOverMessage = new MessageDialog("Game over. Player One Got three consecutive jackpots!!!"); //game over message
                         GameOverMessage.ShowAsync(); // display the message ie. input
-                        EndGame(); // calling the method EndGame() which will reset the interfaces (dice, score, etc..) to normal
+                        Count = 0; // reset the counter to 0, so the user can restart the game. 
+                        _diceGame = new DiceGame();
+                        LeftDice.Text = "1";
+                        RightDice.Text = "1";
+                        P1Score.Text = "Player One Score: 0";
+                        P2Score.Text = "Player Two Score: 0";
+                        RollButton.Content = "Roll (Player 1)";
+                        TurnScore.Text = "Turn Score: 0";
+                        P1Jackpot.Text = $"Player 1 consecutive Jackpots count: 0";
+                        P2Jackpot.Text = $"Player 2 consecutive Jackpots count: 0";
+                        RollsLeft.Text = $"Rolls left: {(10 - Count)}";
 
                     }
 
@@ -101,7 +111,16 @@ namespace JoraidAdnan_cs_A1
                         MessageDialog GameOverMessage = new MessageDialog("Game over. Player Two Got three consecutive jackpots!!!"); //game over message
                         GameOverMessage.ShowAsync(); // display the message ie. input
                         _diceGame = new DiceGame();
-                        EndGame();
+                        Count = 0; // reset the counter to 0, so the user can restart the game. 
+                        LeftDice.Text = "1";
+                        RightDice.Text = "1";
+                        P1Score.Text = "Player One Score: 0";
+                        P2Score.Text = "Player Two Score: 0";
+                        RollButton.Content = "Roll (Player 1)";
+                        TurnScore.Text = "Turn Score: 0";
+                        P1Jackpot.Text = $"Player 1 consecutive Jackpots count: 0";
+                        P2Jackpot.Text = $"Player 2 consecutive Jackpots count: 0";
+                        RollsLeft.Text = $"Rolls left: {(10 - Count)}";
 
                     }
 
@@ -113,8 +132,6 @@ namespace JoraidAdnan_cs_A1
                 EndGame();
 
             }
-
-
 
 
         }
