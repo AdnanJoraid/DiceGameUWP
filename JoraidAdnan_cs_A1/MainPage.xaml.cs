@@ -23,11 +23,12 @@ namespace JoraidAdnan_cs_A1
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private DiceGame _diceGame = new DiceGame();
+        private DiceGame _diceGame = new DiceGame(); // instance of class DiceGame
 
-        int Count;
+        int Count; //var of type int that will count how many times the user clicked the roll button
         public MainPage()
         {
+            // initializing the program/interface with thesee data
             this.InitializeComponent();
             RollButton.Content = "Roll (Player 1)";
             P1Score.Text = "Player One Score: 0";
@@ -45,11 +46,11 @@ namespace JoraidAdnan_cs_A1
 
 
             Count++; // counts how many times the user clicked the button roll 
-            _diceGame.Counter = Count;
-            if (Count != 10)
+            _diceGame.Counter = Count; // passing the count to the DiceGame class
+            if (Count != 10) // if the count is not 10 -> if count is equal to 10 the game will be over
             {
 
-                if (Count % 2 == 0)
+                if (Count % 2 == 0) // if player one
                 {
                     RollButton.Content = "Roll (Player 1)";
                     TurnScore.Text = $"Turn Score: {_diceGame.TurnPoints}";
@@ -61,6 +62,7 @@ namespace JoraidAdnan_cs_A1
 
                     if (_diceGame.IsPlayerOneJackpot())
                     {
+                        // display a message when player one gets two consecutive jackpots
                         MessageDialog GameOverMessage = new MessageDialog("Player One Got two consecutive jackpots!!!"); //game over message
                         GameOverMessage.ShowAsync(); // display the message ie. input
 
@@ -68,15 +70,16 @@ namespace JoraidAdnan_cs_A1
                     }
                     else if (_diceGame.PlayerOneGameOver())
                     {
+                        // display a messaage when player one gets three consecutive jackpots -> game over
                         MessageDialog GameOverMessage = new MessageDialog("Game over. Player One Got three consecutive jackpots!!!"); //game over message
                         GameOverMessage.ShowAsync(); // display the message ie. input
-                        EndGame();
+                        EndGame(); // calling the method EndGame() which will reset the interfaces (dice, score, etc..) to normal
 
                     }
 
                 }
 
-                else if (Count % 2 == 1)
+                else if (Count % 2 == 1) // if player two turn
                 {
                     RollButton.Content = "Roll (Player 2)";
                     TurnScore.Text = $"Turn Score: {_diceGame.TurnPoints}";
@@ -86,14 +89,14 @@ namespace JoraidAdnan_cs_A1
                     RightDice.Text = DiceValues[1].ToString();
                     RollsLeft.Text = $"Rolls left: {(10 - Count)}";
 
-                    if (_diceGame.IsPlayerTwoJackpot())
+                    if (_diceGame.IsPlayerTwoJackpot()) //display jackpot message
                     {
                         MessageDialog GameOverMessage = new MessageDialog("Player Two Got two consecutive jackpots!!!"); //game over message
                         GameOverMessage.ShowAsync(); // display the message ie. input
 
 
                     }
-                    else if (_diceGame.PlayerTwoGameOver())
+                    else if (_diceGame.PlayerTwoGameOver()) //display gameover message due to getting three consecutive jackpots
                     {
                         MessageDialog GameOverMessage = new MessageDialog("Game over. Player Two Got three consecutive jackpots!!!"); //game over message
                         GameOverMessage.ShowAsync(); // display the message ie. input
@@ -105,7 +108,7 @@ namespace JoraidAdnan_cs_A1
                 }
 
             }
-            if (Count == 10)
+            if (Count == 10) // if the count of rolling the dice is 10 -> end the game
             {
                 EndGame();
 
@@ -118,23 +121,23 @@ namespace JoraidAdnan_cs_A1
 
         public void EndGame()
         {
-            if (_diceGame.IsWinner())
+            if (_diceGame.IsWinner()) // display the winner message
             {
                 MessageDialog GameOverMessage = new MessageDialog($"Game Over. The Winner is Player One with the overall score {_diceGame.PlayerOneScore}");
                 GameOverMessage.ShowAsync();
             }
-            else if (!_diceGame.IsWinner() && !_diceGame.IsTie())
+            else if (!_diceGame.IsWinner() && !_diceGame.IsTie()) //displays a message if player two won 
             {
                 MessageDialog GameOverMessage = new MessageDialog($"Game Over. The Winner is Player Two with the overall score {_diceGame.PlayerTwoScore}");
                 GameOverMessage.ShowAsync();
             }
-            else if (_diceGame.IsTie())
+            else if (_diceGame.IsTie()) // displays the tie messsage
             {
                 MessageDialog GameOverMessage = new MessageDialog($"Game Over. No winner 'TIE' Player one score is: {_diceGame.PlayerOneScore}, player two score is: {_diceGame.PlayerTwoScore}");
                 GameOverMessage.ShowAsync();
             }
 
-            _diceGame = new DiceGame();
+            _diceGame = new DiceGame(); //create a new instance for new data 
             Count = 0; // reset the counter to 0, so the user can restart the game. 
 
             LeftDice.Text = "1";
