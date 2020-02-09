@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JoraidAdnan_cs_A1
 {
-    class DiceGame
+    public class DiceGame
     {
         public int PlayerOneScore;
         public int PlayerTwoScore;
